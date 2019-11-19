@@ -32,3 +32,34 @@ var shiftedItem = todos.shift();
 console.log("My Todos; first item deleted with shift:", todos);
 console.log("Shifted item:", shiftedItem);
 
+// VERSION-2 FUNCTIONS 
+// REQUIREMENTS
+// 1-IT SHOULD HAVE A FUNCTION TO DISPLAY TODOS
+// 2-IT SHOULD HAVE A FUNCTION TO ADD NEW TODOS
+// 3-IT SHOULD HAVE A FUNCTION TO CHANGE A TODO
+// 4-IT SHOULD HAVE A FUNCTION TO DELETE A TODO
+
+var todos = ['item1', 'item2', 'item3']; // global var which we can acces from any function
+    
+   function displayTodos () {
+        console.log('my todos:', todos);
+   }
+    displayTodos();
+   
+   function addTodo(todo){
+       todos.push(todo);
+       displayTodos();
+   }
+   addTodo('item4'); 
+   
+   function changeTodo(index,value){
+       todos[index] = value;
+       displayTodos();
+   }
+   changeTodo(1,'changed');
+
+   function deleteTodo(index){
+       todos.splice(index,1);
+       displayTodos();
+   }
+   deleteTodo(2);
