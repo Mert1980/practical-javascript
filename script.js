@@ -1,26 +1,31 @@
-// VERSION-3 OBJECTS
-// REQUIREMENTS FOR VERSION3
-// 1-IT SHOULD STORE THE TODOS ARRAY ON AN OBJECT
-// 2-IT SHOULD HAVE A DISPLAYTODOS METHOD
-// 3-IT SHOULD HAVE AN ADDTODO METHOD
-// 4-IT SHOULD HAVE A CHANGETODO METHOD
-// 5-IT SHOULD HAVE A DELETETODO METHOD
+// VERSION-4 BOOLEANS
+// REQUIREMENTS FOR VERSION4
+// 1-todoList.AddTodo should add objects
+// 2-todoList.ChangeTodo should change the todoText property
+// 3-todoList.toggleCompleted should change the completed property
 
-   var todolist = {
-    todos: ['item1', 'item2', 'item3'],
+var todolist = {
+    todos: [],
     displayTodos: function(){
         console.log('here:',this.todos)},
-    addTodo: function (a){
-        this.todos.push(a);
-        this.displayTodos();},
-        //todolist.addTo('added item')
-    changeTodo: function (index, value){
-        this.todos[index] = value;
-        this.displayTodos();},
-        //todolist.changeTo(0,'changed')
-    deleteTodo: function(index){
-        this.todos.splice(index,1);
+    addTodo: function (todoText){
+        this.todos.push({
+            todoText:todoText,
+            completed:false
+        });
         this.displayTodos();
-        //tolist.deleteTo(0)
+    },
+    changeTodo: function (position,todoText){
+        this.todos[position].todoText = todoText;
+        this.displayTodos();
+    },
+    deleteTodo: function(position){
+        this.todos.splice(position,1);
+        this.displayTodos();
+    },
+    toggleCompleted: function(position){
+        var todo = this.todos[position];
+        todo.completed = !todo.completed;
+        this.displayTodos();
     }
-    };
+};
