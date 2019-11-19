@@ -1,8 +1,7 @@
-// VERSION-5 LOOPS OF LOGIC
-// REQUIREMENTS FOR VERSION5
-// 1- .displayTodos should show .todoText
-// 2- .displayTodos should tell you if .todos empty
-// 3- .displayTodos should show .completed
+// VERSION-6 THINKING IN CODE
+// REQUIREMENTS FOR VERSION6
+// 1- .toggleAll: If everything is true, make everything false
+// 2- .toggleAll: Otherwise, make everything true
 
 var todolist = {
     todos: [],
@@ -39,5 +38,27 @@ var todolist = {
         var todo = this.todos[position];
         todo.completed = !todo.completed;
         this.displayTodos();
-    }
+    },
+    toggleAll: function (){
+      let totalTodos = this.todos.length;
+      let completedTodos = 0;
+    // Get number of completed todos
+      for (let i=0 ; i<totalTodos ; i++){
+        if (this.todos[i].completed === true){
+          completedTodos++;
+          }
+        }
+    // Case-1:if everything is true, make everything false
+        if (completedTodos === totalTodos){
+          for (let i=0 ; i<totalTodos ; i++){
+            this.todos[i].completed = false;
+            }      
+    // Case-2:Otherwise, make everything true
+        } else {
+          for (let i=0 ; i<totalTodos ; i++){
+            this.todos[i].completed = true;
+            } 
+        }
+        this.displayTodos();
+      }
 };
