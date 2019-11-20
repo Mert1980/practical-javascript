@@ -1,11 +1,7 @@
-// VERSION-10 CLICK TO DELETE
-// REQUIREMENTS FOR VERSION 10
-// 1-There should be a way to creat delete buttons
-// 2-There should be a delete button for each todo
-// 3-Each li should have an id that has the todo position
-// 4-Delete buttons should have access to the todo id
-// 5-Clicking delete should update todoList.todos and the DOM
-
+// VERSION-11 DESTROY ALL "FOR LOOPS"
+// REQUIREMENTS FOR VERSION 11
+// 1-todoList.toggleAll should use forEach
+// 2-view.displayTodos should use forEach
 let todoList = {
   todos: [],
   addTodo: function (todoText) {
@@ -27,24 +23,22 @@ let todoList = {
   toggleAll: function (){
     let totalTodos = this.todos.length;
     let completedTodos = 0;
-  // Get number of completed todos
-    for (let i=0 ; i<totalTodos ; i++){
-      if (this.todos[i].completed === true){
-        completedTodos++;
-        }
-      }
-  // Case 1:if everything is true, make everything false
+    
+    this.todos.forEach(function(todo){
+      if (todo.completed === true){
+          completedTodos++;
+          }
+    });
+    this.todos.forEach(function(todo){
+      // Case1 : If everything is true, make everything false
       if (completedTodos === totalTodos){
-        for (let i=0 ; i<totalTodos ; i++){
-          this.todos[i].completed = false;
-          }      
-  // Case 1:Otherwise, make everything true
-      } else {
-        for (let i=0 ; i<totalTodos ; i++){
-          this.todos[i].completed = true;
-          } 
+        todo.completed = false;
+      // Case2 : Otherwise, make everything true
+        } else {
+        todo.completed = true;
       }
-    }
+    });
+  }
 }
 let handler = {
 addTodo: function(){
@@ -80,10 +74,9 @@ let view = {
 displayTodos: function(){
   let todosUl = document.querySelector('ul');
   todosUl.innerHTML = '';
-
-  for (let i=0 ; i < todoList.todos.length ; i++){
+  
+  todoList.todos.forEach(function(todo, position){
     let todoLi = document.createElement('li');
-    let todo = todoList.todos[i];
     let todoTextWithCompletion = '';
 
     if(todo.completed === true){
@@ -91,12 +84,11 @@ displayTodos: function(){
     } else {
       todoTextWithCompletion = '( ) ' + todo.todoText;
     }
-    
-    todoLi.id = i;
+    todoLi.id = position;
     todoLi.textContent = todoTextWithCompletion;
     todoLi.appendChild(this.createDeleteButton());
     todosUl.appendChild(todoLi);
-  }
+  }, this) // this refers to view object ==> forEach(callbak, this)
 },
 createDeleteButton: function (){
   var deleteButton = document.createElement('button');
