@@ -56,13 +56,13 @@ h1 {
   }
 
   #addTodoTextInput { 
-    width: 75%; 
+    width: 70%; 
     margin-left: 2%;
     padding: 15px;
   }
 
   #changeTodoTextInput {
-    width: 65%; 
+    width: 60%; 
     margin-left: 2%;
     padding: 15px;
   }
