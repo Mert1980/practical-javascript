@@ -83,3 +83,17 @@ h1 {
     padding-top: 5%;
     padding-bottom: 5%;
     color: rgb(2, 1, 54);  }
+
+    @media (max-width: 768px) {
+      header #brand,
+      .button, #addTodoTextInput, #changeTodoTextInput {
+        float: none;
+        text-align: center;
+        width: 100%;
+       }
+        #toggleCompletedPositionInput, #changeTodoPositionInput {
+        float: none;
+        text-align: center;
+        width: 100%;  
+       }
+    }
